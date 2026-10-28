@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+// Use environment variable if deployed separately (e.g. Render/Railway), fallback to '/api' for local proxy/Vercel rewrites
+const baseURL = import.meta.env.VITE_API_BASE_URL || '/api';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL,
   headers: {
     'Content-Type': 'application/json'
   }
